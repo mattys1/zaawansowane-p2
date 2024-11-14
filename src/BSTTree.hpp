@@ -20,4 +20,6 @@ private:
 			delete right;
 		}
 	};
+
+	Tree* root;
 };
