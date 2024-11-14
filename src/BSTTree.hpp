@@ -24,5 +24,5 @@ private:
 	Tree* root;
 
 public:
-	BSTTree(const T& element): root { element } {}
+	BSTTree(const T& element): root { new Tree(element) } {}
 };
