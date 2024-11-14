@@ -20,4 +20,15 @@ private:
 			delete right;
 		}
 	};
+
+	Tree root;
+
+	void recursive_add(const T& element, Tree* node) {
+
+	}
+
+public:
+	void add(const T& element) {
+		recursive_add(element, root);
+	}
 };
