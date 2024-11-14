@@ -24,11 +24,30 @@ private:
 	Tree root;
 
 	void recursive_add(const T& element, Tree* node) {
+		if(element >= node->contents) {
+			if(node->right == nullptr) {
+				node->right = Tree(element);
+				return;
+			}
 
+			recursive_add(element, node->right);
+		} else {
+			if(node->right == nullptr) {
+				node->left = Tree(element);
+				return;
+			}
+
+			recursive_add(element, node->left);
+		}	
 	}
 
 public:
 	void add(const T& element) {
+		if(root == nullptr) {
+			root = new Tree(element);
+			return;
+		}
+
 		recursive_add(element, root);
 	}
 };
