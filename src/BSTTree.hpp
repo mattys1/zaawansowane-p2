@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 template <typename T>
 class BSTTree {
 private:
@@ -25,4 +26,5 @@ private:
 
 public:
 	BSTTree(const T& element): root { new Tree(element) } {}
+	~BSTTree() { delete root; }
 };
