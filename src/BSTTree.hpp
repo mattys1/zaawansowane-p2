@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 template <typename T>
 class BSTTree {
 private:
@@ -27,14 +26,14 @@ private:
 	void recursive_add(const T& element, Tree* node) {
 		if(element >= node->contents) {
 			if(node->right == nullptr) {
-				node->right = Tree(element);
+				node->right = new Tree(element);
 				return;
 			}
 
 			recursive_add(element, node->right);
 		} else {
 			if(node->right == nullptr) {
-				node->left = Tree(element);
+				node->left = new Tree(element);
 				return;
 			}
 
