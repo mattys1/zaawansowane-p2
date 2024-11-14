@@ -21,7 +21,7 @@ private:
 		}
 	};
 
-	Tree root;
+	Tree* root;
 
 	void recursive_add(const T& element, Tree* node) {
 		if(element >= node->contents) {
