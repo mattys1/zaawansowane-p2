@@ -1,0 +1,89 @@
+	\newpage
+\section{Implementacja}		%4
+%Opisać implementacje algorytmu/programu. Pokazać ciekawe fragmenty kodu
+%Opisać powstałe wyniki (algorytmu/nrzędzia)
+
+\subsection{Ogólne informacje o implementacji klasy}
+
+Lista jest zaimplementowana jako jeden plik \texttt{.hpp}. Nie jest podzielona na plik implementacji oraz nagłówek, ponieważ jest ona szablonem. Deklaracja klasy oraz prywatne elementy wyglądają następująco:
+
+\begin{lstlisting}[caption=Deklaracja szblonu listy, label={lst:list_dec}, language=C++]
+	template<typename T>
+	class DoubleLinkedList {
+	private:
+	struct Node {
+		Node* previous;
+		Node* next;
+		T contents;
+
+		Node(Node* oPrevious, Node* oNext, T oContents): 
+			previous { oPrevious },
+			next { oNext },
+			contents { oContents } {}
+
+		~Node(void) {
+			delete next;
+		}
+	};
+
+	Node* head;
+	Node* tail;
+
+	Node* get_node_at(size_t index) {
+		Node* currentNode { head };
+		for(size_t i {}; i < index; i++) {
+			currentNode = currentNode->next;
+		}
+
+		return currentNode;
+	}
+
+public:
+	...
+\end{lstlisting}
+
+Jak widać w kodzie \ref{lst:list_dec}., Klasa jest wrapperem dla structa \texttt{Node}. Struct ten ma dwa wskaźniki - \texttt{next} dla elementu następnego i \texttt{previous} dla elementu poprzedniego. Jego konstruktor pozwala od razu ustawiać zawartość oraz te wskaźniki Metoda \texttt{get\_node\_at()} jest pomocniczą metodą pozwalającą uzyskać wskaźnik do \texttt{Node} o danym indeksie, podążając w przód od wskaźnika head, \texttt{index} razy.
+
+Manipulacje strukturą listy odbywają się poprzez szereg metod publicznych. Wiele z nich posiada podobną strukturę. Za przykład jednej z nich można wziąć \texttt{prepend()}:
+
+\begin{lstlisting}[caption = Kod \texttt{prepend()}, label={lst:prepend}, language=C++]
+	void prepend(const T& item) {
+		if(head == nullptr) {
+			head = new Node { nullptr, nullptr, item };	
+			tail = head;
+			return;
+		}
+
+		head = new Node { nullptr, head, item };
+		head->next->previous = head;
+	}
+\end{lstlisting}
+
+Metoda z fragmentu nr. \ref{lst:prepend} ma na celu wstawienie elementu, którego wartość jest zawarta w parametrze \texttt{item} na początku listy. Na początku metody, sprawdzane jest czy lista jest pusta - wtedy \texttt{head == nullptr}. Jeżeli jest, trzeba stworzyć nowego \texttt{Node} na miejscu heada z zawartością będąca parametrem \texttt{item}. Jeżeli \texttt{head} już istnieje, to też tworzy się nowego \texttt{Nodea} na jego miejscu, lecz jako wskaźnik \texttt{next} ustawia się adres starego \texttt{heada}. Potem we wskaźniku \texttt{previous} starego \texttt{heada} ustawia się adres nowego heada. Ten zabieg efektywnie sprawił ze stary \texttt{head} jest drugi w kolejności listy.
+
+\subsection{Ciekawe fragmenty kodu}
+
+W metodzie \texttt{pop\_at()}, mającej na celu usuniecie \texttt{Nodea} o danym indeksie, wywoływany jest destruktor danego \texttt{Nodea} w taki sposób, aby - ze względu na jego rekursywny charakter - nie usuwać następnych elementów listy. Przy czym ciągłość listy musi być zachowana. Kod metody wygląda następująco:
+
+\begin{lstlisting}[caption=Kod \texttt{pop\_at()}, label={lst:popat}, language=C++]
+
+	void pop_at(size_t index) {
+		Node* toPop { get_node_at(index) };
+		if(toPop == head) {
+			rpop();
+			return;
+		} else if(toPop == tail) {
+			pop();
+			return;
+		}
+
+		toPop->previous->next = toPop->next;
+		toPop->next->previous = toPop->previous;
+		toPop->next = nullptr;
+
+		delete toPop;
+	}
+
+\end{lstlisting}
+
+Jak widać na fragmencie nr. \ref{lst:popat}, takie zabiegi wymagają niezłej zabawy ze wskaźnikami. 
