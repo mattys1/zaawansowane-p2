@@ -44,6 +44,7 @@ private:
 
 public:
 	BSTTree(const T& element): root { new Tree(element) } {}
+	BSTTree(void): root { nullptr } {}
 	~BSTTree() { delete root; }
 
 	void add(const T& element) {
