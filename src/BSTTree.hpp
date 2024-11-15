@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ranges>
+#include <vector>
 template <typename T>
 class BSTTree {
 private:
@@ -49,12 +51,24 @@ private:
 		}	
 	}
 
+	void preorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) {
+		if(node == nullptr) {
+			return;
+		}
+
+		traversedTrees.push_back(node);
+
+		preorder_traverse_recursive(node->left, traversedTrees);
+		preorder_traverse_recursive(node->right, traversedTrees);
+	}
+
 public:
 	BSTTree(const T& element): root { new Tree(element) } {}
 	BSTTree(void): root { nullptr } {}
 	~BSTTree() { delete root; }
 
 	/// Add a single element to the tree
+	/// @param element element of T to insert to the tree
 	///
 	/// This operation happens recursively
 	void add(const T& element) {
@@ -64,5 +78,15 @@ public:
 	void delete_tree(void) {
 		delete root;
 		root = nullptr;
+	}
+
+	/// Traverse the tree in the preorder direction and return a vector the contents of each node
+	/// @return preordered vector of the elements of the tree
+	std::vector<T> traverse_preorder(void) {
+		std::vector<Tree*> traversedTrees;
+	
+		preorder_traverse_recursive(root, traversedTrees);
+	
+		return traversedTrees | std::ranges::views::transform([](const Tree* tree) { return tree->contents; }) | std::ranges::to<std::vector>(); 
 	}
 };
