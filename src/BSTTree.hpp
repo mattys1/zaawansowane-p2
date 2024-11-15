@@ -26,6 +26,11 @@ private:
 	void recursive_add(const T& element, Tree* node, Tree* parentNode = nullptr) {
 		if(node == nullptr) {
 			node = new Tree(element);
+
+			if(parentNode == nullptr) {
+				return;
+			}
+
 			node->parent = parentNode;
 
 			if(node->contents >= parentNode->contents) {
