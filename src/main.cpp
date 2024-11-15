@@ -23,6 +23,13 @@ int main (int argc, char *argv[]) {
 		std::print("{},", item);
 	}
 
+	std::println();
+
+	std::println("Postorder: traversal:");
+	for(const auto item : tree.traverse_postorder()) {
+		std::print("{},", item);
+	}
+
 	tree.delete_tree();
 
 	tree.add(8);
