@@ -41,6 +41,48 @@ private:
 		}	
 	}
 
+	// Searches for the lowest element
+	Tree* find_min_child(Tree* node) {
+		while (node->left != nullptr) {
+			node = node->left;
+		}
+		return node;
+	}
+
+	Tree* recursive_remove(Tree* node, const T& element) {
+		if (node == nullptr) {
+			return node; // returns null if there's no element
+		}
+
+		if (element < node->contents) {
+			node->left = recursive_remove(node->left, element); // Here it searches the left side of the tree provided the element is less than contents
+		}
+		else if (element > node->contents) {
+			node->right = recursive_remove(node->right, element); // Same principle but searches the right side
+		}
+		else {
+			// For nodes with one or no children
+			if (node->left == nullptr) {
+				Tree* temp = node->right;
+				node->right = nullptr;
+				delete node;
+				return temp;
+			}
+			else if (node->right == nullptr) {
+				Tree* temp = node->left;
+				node->left = nullptr;
+				delete node;
+				return temp;
+			}
+
+			// For nodes with two and more children
+			Tree* temp = find_min_child(node->right);
+			node->contents = temp->contents;
+			node->right = recursive_remove(node->right, temp->contents);
+		}
+		return node;
+	}
+
 public:
 	BSTTree(const T& element): root { new Tree(element) } {}
 	BSTTree(void): root { nullptr } {}
@@ -53,5 +95,9 @@ public:
 		}
 
 		recursive_add(element, root);
+	}
+
+	void remove(const T& element) {
+		root = recursive_remove(root, element);
 	}
 };
