@@ -62,6 +62,18 @@ private:
 		preorder_traverse_recursive(node->right, traversedTrees);
 	}
 
+	void inorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) {
+		if(node == nullptr) {
+			return;
+		}
+
+		inorder_traverse_recursive(node->left, traversedTrees);
+
+		traversedTrees.push_back(node);
+
+		inorder_traverse_recursive(node->right, traversedTrees);
+	}
+
 public:
 	BSTTree(const T& element): root { new Tree(element) } {}
 	BSTTree(void): root { nullptr } {}
@@ -87,6 +99,16 @@ public:
 	
 		preorder_traverse_recursive(root, traversedTrees);
 	
+		return traversedTrees | std::ranges::views::transform([](const Tree* tree) { return tree->contents; }) | std::ranges::to<std::vector>(); 
+	}
+
+	/// Traverse the tree in the inorder direction and return a vector the contents of each node
+	/// @return inordered vector of the elements of the tree
+	std::vector<T> traverse_inorder() {
+		std::vector<Tree*> traversedTrees;
+
+		inorder_traverse_recursive(root, traversedTrees);
+
 		return traversedTrees | std::ranges::views::transform([](const Tree* tree) { return tree->contents; }) | std::ranges::to<std::vector>(); 
 	}
 };
