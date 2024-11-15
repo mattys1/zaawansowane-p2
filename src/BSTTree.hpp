@@ -55,4 +55,9 @@ public:
 	void add(const T& element) {
 		recursive_add(element, root);
 	}
+
+	void delete_tree(void) {
+		delete root;
+		root = nullptr;
+	}
 };
