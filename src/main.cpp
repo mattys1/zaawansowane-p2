@@ -11,11 +11,18 @@ int main (int argc, char *argv[]) {
 	tree.add(7);
 	tree.add(1);
 
+	std::println("Preorder traversal:");
 	for(const auto item : tree.traverse_preorder()) {
-		std::println("{}", item);
+		std::print("{},", item);
 	}
 
-	tree.traverse_preorder();
+	std::println();
+
+	std::println("Inorder traversal:");
+	for(const auto item : tree.traverse_inorder()) {
+		std::print("{},", item);
+	}
+
 	tree.delete_tree();
 
 	tree.add(8);
