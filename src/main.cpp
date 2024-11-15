@@ -1,4 +1,5 @@
 #include "BSTTree.hpp"
+#include <print>
 
 int main (int argc, char *argv[]) {
 	BSTTree<int> tree(5);
@@ -10,6 +11,11 @@ int main (int argc, char *argv[]) {
 	tree.add(7);
 	tree.add(1);
 
+	for(const auto item : tree.traverse_preorder()) {
+		std::println("{}", item);
+	}
+
+	tree.traverse_preorder();
 	tree.delete_tree();
 
 	tree.add(8);
