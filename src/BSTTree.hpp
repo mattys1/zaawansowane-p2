@@ -23,21 +23,24 @@ private:
 
 	Tree* root;
 
-	void recursive_add(const T& element, Tree* node) {
+	void recursive_add(const T& element, Tree* node, Tree* parentNode = nullptr) {
+		if(node == nullptr) {
+			node = new Tree(element);
+			node->parent = parentNode;
+
+			if(node->contents >= parentNode->contents) {
+				parentNode->right = node;
+			} else {
+				parentNode->left = node;
+			}
+
+			return;
+		}
+
 		if(element >= node->contents) {
-			if(node->right == nullptr) {
-				node->right = new Tree(element);
-				return;
-			}
-
-			recursive_add(element, node->right);
+			recursive_add(element, node->right, node);
 		} else {
-			if(node->right == nullptr) {
-				node->left = new Tree(element);
-				return;
-			}
-
-			recursive_add(element, node->left);
+			recursive_add(element, node->left, node);
 		}	
 	}
 
@@ -47,11 +50,6 @@ public:
 	~BSTTree() { delete root; }
 
 	void add(const T& element) {
-		if(root == nullptr) {
-			root = new Tree(element);
-			return;
-		}
-
 		recursive_add(element, root);
 	}
 };
