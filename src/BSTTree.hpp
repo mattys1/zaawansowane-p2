@@ -49,6 +49,9 @@ public:
 	BSTTree(void): root { nullptr } {}
 	~BSTTree() { delete root; }
 
+	/// Add a single element to the tree
+	///
+	/// This operation happens recursively
 	void add(const T& element) {
 		recursive_add(element, root);
 	}

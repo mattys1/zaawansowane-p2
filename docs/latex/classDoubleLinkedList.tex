@@ -1,0 +1,192 @@
+\doxysection{Double\+Linked\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classDoubleLinkedList}{}\label{classDoubleLinkedList}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+
+
+Implementation of a double linked list using the heap.  
+
+
+
+
+{\ttfamily \#include $<$doublelinkedlist.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDoubleLinkedList_a13c39c95d5506742945c64e6b2e40bf8}{Double\+Linked\+List}} (void)
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDoubleLinkedList_aebaa7216729c1d8175a31b7d7910650c}{\texorpdfstring{$\sim$}{\string~}\+Double\+Linked\+List}} (void)
+\item 
+void \mbox{\hyperlink{classDoubleLinkedList_ac5f075bc31a0282c5c103a915a3624c5}{display}} (void)
+\begin{DoxyCompactList}\small\item\em Print the entire list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a0ccf82f8b03b5f116590e16ea3fbcd57}{rdisplay}} (void)
+\begin{DoxyCompactList}\small\item\em Print the entire list in reverse order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a9feca27122e9614d3f57ed56008f4bf7}{append}} (const T \&item)
+\begin{DoxyCompactList}\small\item\em Append an item to the end of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a52c348fc8b49fbcef10d5a541c2c659d}{prepend}} (const T \&item)
+\begin{DoxyCompactList}\small\item\em Prepend an item to the beggining of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a987929d6e7645d2ec31578c43c08a860}{insert}} (const T \&item, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Insert an item at a certain index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a5b9cb7b27c670ae6a71c484addf7b7d5}{pop}} (void)
+\begin{DoxyCompactList}\small\item\em Remove an element from the tail of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a6a8c041f5f5d74710db38d516e314756}{rpop}} (void)
+\begin{DoxyCompactList}\small\item\em Remove an element from the head of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_ad6ea0ce7f95f24677b38b34ba0aec648}{pop\+\_\+at}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Remove an element at a given index. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{classDoubleLinkedList_a718b3cb0f59f82e30faf738818848c6b}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Returns the address of the contents at a specific index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_a0d6dfeabf2e40475a0cc4ac6af476242}{display\+\_\+at}} (size\+\_\+t index, size\+\_\+t offset=0)
+\begin{DoxyCompactList}\small\item\em Display an element at {\ttfamily index}, index can be offset by {\ttfamily offset} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDoubleLinkedList_adb259991b6afd0f85191f38ac9595d14}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear the memory allocated by the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Double\+Linked\+List$<$ T $>$}
+Implementation of a double linked list using the heap. 
+
+As this is a template, the class can\textquotesingle{}t be split into a header and implementation file. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDoubleLinkedList_a13c39c95d5506742945c64e6b2e40bf8}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!DoubleLinkedList@{DoubleLinkedList}}
+\index{DoubleLinkedList@{DoubleLinkedList}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DoubleLinkedList()}{DoubleLinkedList()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a13c39c95d5506742945c64e6b2e40bf8} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\mbox{\hyperlink{classDoubleLinkedList}{\+::\+Double\+Linked\+List}} (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default Constructor. 
+
+\Hypertarget{classDoubleLinkedList_aebaa7216729c1d8175a31b7d7910650c}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!````~DoubleLinkedList@{\texorpdfstring{$\sim$}{\string~}DoubleLinkedList}}
+\index{````~DoubleLinkedList@{\texorpdfstring{$\sim$}{\string~}DoubleLinkedList}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DoubleLinkedList()}{\string~DoubleLinkedList()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_aebaa7216729c1d8175a31b7d7910650c} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}} (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDoubleLinkedList_a9feca27122e9614d3f57ed56008f4bf7}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!append@{append}}
+\index{append@{append}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a9feca27122e9614d3f57ed56008f4bf7} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::append (\begin{DoxyParamCaption}\item[{const T \&}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Append an item to the end of the list. 
+
+\Hypertarget{classDoubleLinkedList_adb259991b6afd0f85191f38ac9595d14}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_adb259991b6afd0f85191f38ac9595d14} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clear the memory allocated by the list. 
+
+\Hypertarget{classDoubleLinkedList_ac5f075bc31a0282c5c103a915a3624c5}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!display@{display}}
+\index{display@{display}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_ac5f075bc31a0282c5c103a915a3624c5} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::display (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Print the entire list. 
+
+\Hypertarget{classDoubleLinkedList_a0d6dfeabf2e40475a0cc4ac6af476242}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!display\_at@{display\_at}}
+\index{display\_at@{display\_at}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{display\_at()}{display\_at()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a0d6dfeabf2e40475a0cc4ac6af476242} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::display\+\_\+at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{, }\item[{size\+\_\+t}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Display an element at {\ttfamily index}, index can be offset by {\ttfamily offset} 
+
+\Hypertarget{classDoubleLinkedList_a987929d6e7645d2ec31578c43c08a860}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a987929d6e7645d2ec31578c43c08a860} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{const T \&}]{item}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Insert an item at a certain index. 
+
+\Hypertarget{classDoubleLinkedList_a718b3cb0f59f82e30faf738818848c6b}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a718b3cb0f59f82e30faf738818848c6b} 
+template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the address of the contents at a specific index. 
+
+\Hypertarget{classDoubleLinkedList_a5b9cb7b27c670ae6a71c484addf7b7d5}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!pop@{pop}}
+\index{pop@{pop}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a5b9cb7b27c670ae6a71c484addf7b7d5} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::pop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove an element from the tail of the list. 
+
+\Hypertarget{classDoubleLinkedList_ad6ea0ce7f95f24677b38b34ba0aec648}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!pop\_at@{pop\_at}}
+\index{pop\_at@{pop\_at}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_at()}{pop\_at()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_ad6ea0ce7f95f24677b38b34ba0aec648} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::pop\+\_\+at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove an element at a given index. 
+
+\Hypertarget{classDoubleLinkedList_a52c348fc8b49fbcef10d5a541c2c659d}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!prepend@{prepend}}
+\index{prepend@{prepend}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{prepend()}{prepend()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a52c348fc8b49fbcef10d5a541c2c659d} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::prepend (\begin{DoxyParamCaption}\item[{const T \&}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prepend an item to the beggining of the list. 
+
+\Hypertarget{classDoubleLinkedList_a0ccf82f8b03b5f116590e16ea3fbcd57}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!rdisplay@{rdisplay}}
+\index{rdisplay@{rdisplay}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{rdisplay()}{rdisplay()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a0ccf82f8b03b5f116590e16ea3fbcd57} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::rdisplay (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Print the entire list in reverse order. 
+
+\Hypertarget{classDoubleLinkedList_a6a8c041f5f5d74710db38d516e314756}\index{DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}!rpop@{rpop}}
+\index{rpop@{rpop}!DoubleLinkedList$<$ T $>$@{DoubleLinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{rpop()}{rpop()}}
+{\footnotesize\ttfamily \label{classDoubleLinkedList_a6a8c041f5f5d74710db38d516e314756} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classDoubleLinkedList}{Double\+Linked\+List}}$<$ T $>$\+::rpop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove an element from the head of the list. 
+

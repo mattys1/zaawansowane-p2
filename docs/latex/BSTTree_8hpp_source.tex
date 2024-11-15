@@ -1,0 +1,61 @@
+\doxysection{BSTTree.\+hpp}
+\hypertarget{BSTTree_8hpp_source}{}\label{BSTTree_8hpp_source}\index{src/BSTTree.hpp@{src/BSTTree.hpp}}
+\mbox{\hyperlink{BSTTree_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBSTTree}{BSTTree}}\ \{}
+\DoxyCodeLine{00005\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{struct\ }Tree\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ T\ contents;}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ Tree*\ parent;}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ Tree*\ left;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ Tree*\ right;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ Tree(T\ \_contents,\ Tree*\ \_parent\ =\ \textcolor{keyword}{nullptr},\ Tree*\ \_left\ =\ \textcolor{keyword}{nullptr},\ Tree*\ \_right\ =\ \textcolor{keyword}{nullptr}):}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ contents\ \{\ \_contents\ \},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ parent\ \{\ \_parent\ \},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ left\ \{\ \_left\ \},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ right\ \{\ \_right\ \}\ \{\}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \string~Tree()\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ left;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ right;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ Tree*\ root;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ recursive\_add(\textcolor{keyword}{const}\ T\&\ element,\ Tree*\ node,\ Tree*\ parentNode\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \textcolor{keyword}{new}\ Tree(element);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>parent\ =\ parentNode;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node-\/>contents\ >=\ parentNode-\/>contents)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>right\ =\ node;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>left\ =\ node;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(element\ >=\ node-\/>contents)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ recursive\_add(element,\ node-\/>right,\ node);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ recursive\_add(element,\ node-\/>left,\ node);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classBSTTree_a78c52ede983c4b795b5c59c39a23765e}{BSTTree}}(\textcolor{keyword}{const}\ T\&\ element):\ root\ \{\ new\ Tree(element)\ \}\ \{\}}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classBSTTree_aedacc70bd91f6b71ba1f65060cd8eb2b}{BSTTree}}(\textcolor{keywordtype}{void}):\ root\ \{\ nullptr\ \}\ \{\}}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classBSTTree_a24051e74f77211f301c69447064fbbfc}{\string~BSTTree}}()\ \{\ \textcolor{keyword}{delete}\ root;\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBSTTree_a6552bd690990f210c8375abddec863f9}{add}}(\textcolor{keyword}{const}\ T\&\ element)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ recursive\_add(element,\ root);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \};}
+
+\end{DoxyCode}

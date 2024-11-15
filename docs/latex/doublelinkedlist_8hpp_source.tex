@@ -1,0 +1,160 @@
+\doxysection{doublelinkedlist.\+hpp}
+\hypertarget{doublelinkedlist_8hpp_source}{}\label{doublelinkedlist_8hpp_source}\index{/home/mattys/skrypty-\/i-\/syfy/studia/rok2/programowanie-\/zaawansowane/p1/src/doublelinkedlist.hpp@{/home/mattys/skrypty-\/i-\/syfy/studia/rok2/programowanie-\/zaawansowane/p1/src/doublelinkedlist.hpp}}
+\mbox{\hyperlink{doublelinkedlist_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <print>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDoubleLinkedList}{DoubleLinkedList}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }Node\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ Node*\ previous;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ Node*\ next;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ T\ contents;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Node(Node*\ oPrevious,\ Node*\ oNext,\ T\ oContents):\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ previous\ \{\ oPrevious\ \},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ next\ \{\ oNext\ \},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ contents\ \{\ oContents\ \}\ \{\}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \string~Node(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ next;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ Node*\ head;}
+\DoxyCodeLine{00028\ \ \ \ \ Node*\ tail;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ Node*\ get\_node\_at(\textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Node*\ currentNode\ \{\ head\ \};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ \{\};\ i\ <\ index;\ i++)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ currentNode\ =\ currentNode-\/>next;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ currentNode;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classDoubleLinkedList_a13c39c95d5506742945c64e6b2e40bf8}{DoubleLinkedList}}(\textcolor{keywordtype}{void}):\ head\ \{\ nullptr\ \},\ tail\ \{\ nullptr\ \}\ \{\}}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classDoubleLinkedList_aebaa7216729c1d8175a31b7d7910650c}{\string~DoubleLinkedList}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ head;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_ac5f075bc31a0282c5c103a915a3624c5}{display}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ Node*\ currentElement\ \{\ head\ \};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\{\{"{}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currentElement\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\}\}"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\{\},\ "{}},\ currentElement-\/>contents);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ currentElement\ =\ currentElement-\/>next;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a0ccf82f8b03b5f116590e16ea3fbcd57}{rdisplay}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ Node*\ currentElement\ \{\ tail\ \};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\{\{"{}});}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(currentElement\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\}\}"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\{\},\ "{}},\ currentElement-\/>contents);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ currentElement\ =\ currentElement-\/>previous;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a9feca27122e9614d3f57ed56008f4bf7}{append}}(\textcolor{keyword}{const}\ T\&\ item)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ head\ =\ \textcolor{keyword}{new}\ Node\ \{\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ item\ \};\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ tail\ =\ head;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ tail\ =\ \textcolor{keyword}{new}\ Node\ \{\ tail,\ \textcolor{keyword}{nullptr},\ item\ \};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ tail-\/>previous-\/>next\ =\ tail;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a52c348fc8b49fbcef10d5a541c2c659d}{prepend}}(\textcolor{keyword}{const}\ T\&\ item)\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ head\ =\ \textcolor{keyword}{new}\ Node\ \{\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ item\ \};\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ tail\ =\ head;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ head\ =\ \textcolor{keyword}{new}\ Node\ \{\ \textcolor{keyword}{nullptr},\ head,\ item\ \};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ head-\/>next-\/>previous\ =\ head;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a987929d6e7645d2ec31578c43c08a860}{insert}}(\textcolor{keyword}{const}\ T\&\ item,\ \textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ Node*\ atInsertion\ \{\ get\_node\_at(index)\ \};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ Node*\ beforeInsertion\ \{\ atInsertion-\/>previous\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(beforeInsertion\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDoubleLinkedList_a52c348fc8b49fbcef10d5a541c2c659d}{prepend}}(item);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ beforeInsertion-\/>next\ =\ atInsertion-\/>previous\ =\ \textcolor{keyword}{new}\ Node(beforeInsertion,\ atInsertion,\ item);}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a5b9cb7b27c670ae6a71c484addf7b7d5}{pop}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ Node*\ newTail\ \{\ tail-\/>previous\ \};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ tail;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ tail\ =\ newTail;}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a6a8c041f5f5d74710db38d516e314756}{rpop}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ Node*\ newHead\ \{\ head-\/>next\ \};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ head-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ head;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ head\ =\ newHead;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ head-\/>previous\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_ad6ea0ce7f95f24677b38b34ba0aec648}{pop\_at}}(\textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ Node*\ toPop\ \{\ get\_node\_at(index)\ \};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(toPop\ ==\ head)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDoubleLinkedList_a6a8c041f5f5d74710db38d516e314756}{rpop}}();}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(toPop\ ==\ tail)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDoubleLinkedList_a5b9cb7b27c670ae6a71c484addf7b7d5}{pop}}();}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ toPop-\/>previous-\/>next\ =\ toPop-\/>next;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ toPop-\/>next-\/>previous\ =\ toPop-\/>previous;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ toPop-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ toPop;}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00154\ \ \ \ \ T\&\ \mbox{\hyperlink{classDoubleLinkedList_a718b3cb0f59f82e30faf738818848c6b}{operator[]}}(\textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ get\_node\_at(index)-\/>contents;}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_a0d6dfeabf2e40475a0cc4ac6af476242}{display\_at}}(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{size\_t}\ offset\ =\ 0)\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ std::print(\textcolor{stringliteral}{"{}\{\}"{}},\ get\_node\_at(index\ +\ offset)-\/>contents);}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDoubleLinkedList_adb259991b6afd0f85191f38ac9595d14}{clear}}()\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ head;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ head\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ tail\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \};}
+
+\end{DoxyCode}
