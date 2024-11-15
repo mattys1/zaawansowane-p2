@@ -14,7 +14,15 @@
 \mbox{\hyperlink{classBSTTree_a24051e74f77211f301c69447064fbbfc}{\texorpdfstring{$\sim$}{\string~}\+BSTTree}} ()
 \item 
 void \mbox{\hyperlink{classBSTTree_a6552bd690990f210c8375abddec863f9}{add}} (const T \&element)
-\begin{DoxyCompactList}\small\item\em Add a single element to the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Add a single element to the tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBSTTree_a6bc1f5e203aae9a9cf58e7a36390f403}{delete\+\_\+tree}} (void)
+\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classBSTTree_add7415105f3b7023a53ea7def24b4b04}{traverse\+\_\+preorder}} (void)
+\begin{DoxyCompactList}\small\item\em Traverse the tree in the preorder direction and return a vector the contents of each node. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classBSTTree_aed009f5d4b05ced9e7b661046bbdb8e2}{traverse\+\_\+inorder}} ()
+\begin{DoxyCompactList}\small\item\em Traverse the tree in the inorder direction and return a vector the contents of each node. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classBSTTree_a4e07048ad982d97bf430821603f11daf}{traverse\+\_\+postorder}} ()
+\begin{DoxyCompactList}\small\item\em Traverse the tree in the postorder direction and return a vector the contents of each node. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -53,4 +61,57 @@ void \mbox{\hyperlink{classBSTTree}{BSTTree}}$<$ T $>$\+::add (\begin{DoxyParamC
 
 Add a single element to the tree. 
 
-This operation happens recursively 
+
+\begin{DoxyParams}{Parameters}
+{\em element} & element of T to insert to the tree\\
+\hline
+\end{DoxyParams}
+This operation happens recursively \Hypertarget{classBSTTree_a6bc1f5e203aae9a9cf58e7a36390f403}\index{BSTTree$<$ T $>$@{BSTTree$<$ T $>$}!delete\_tree@{delete\_tree}}
+\index{delete\_tree@{delete\_tree}!BSTTree$<$ T $>$@{BSTTree$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{delete\_tree()}{delete\_tree()}}
+{\footnotesize\ttfamily \label{classBSTTree_a6bc1f5e203aae9a9cf58e7a36390f403} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classBSTTree}{BSTTree}}$<$ T $>$\+::delete\+\_\+tree (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classBSTTree_aed009f5d4b05ced9e7b661046bbdb8e2}\index{BSTTree$<$ T $>$@{BSTTree$<$ T $>$}!traverse\_inorder@{traverse\_inorder}}
+\index{traverse\_inorder@{traverse\_inorder}!BSTTree$<$ T $>$@{BSTTree$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{traverse\_inorder()}{traverse\_inorder()}}
+{\footnotesize\ttfamily \label{classBSTTree_aed009f5d4b05ced9e7b661046bbdb8e2} 
+template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classBSTTree}{BSTTree}}$<$ T $>$\+::traverse\+\_\+inorder (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Traverse the tree in the inorder direction and return a vector the contents of each node. 
+
+\begin{DoxyReturn}{Returns}
+inordered vector of the elements of the tree 
+\end{DoxyReturn}
+\Hypertarget{classBSTTree_a4e07048ad982d97bf430821603f11daf}\index{BSTTree$<$ T $>$@{BSTTree$<$ T $>$}!traverse\_postorder@{traverse\_postorder}}
+\index{traverse\_postorder@{traverse\_postorder}!BSTTree$<$ T $>$@{BSTTree$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{traverse\_postorder()}{traverse\_postorder()}}
+{\footnotesize\ttfamily \label{classBSTTree_a4e07048ad982d97bf430821603f11daf} 
+template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classBSTTree}{BSTTree}}$<$ T $>$\+::traverse\+\_\+postorder (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Traverse the tree in the postorder direction and return a vector the contents of each node. 
+
+\begin{DoxyReturn}{Returns}
+postordered vector of the elements of the tree 
+\end{DoxyReturn}
+\Hypertarget{classBSTTree_add7415105f3b7023a53ea7def24b4b04}\index{BSTTree$<$ T $>$@{BSTTree$<$ T $>$}!traverse\_preorder@{traverse\_preorder}}
+\index{traverse\_preorder@{traverse\_preorder}!BSTTree$<$ T $>$@{BSTTree$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{traverse\_preorder()}{traverse\_preorder()}}
+{\footnotesize\ttfamily \label{classBSTTree_add7415105f3b7023a53ea7def24b4b04} 
+template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classBSTTree}{BSTTree}}$<$ T $>$\+::traverse\+\_\+preorder (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Traverse the tree in the preorder direction and return a vector the contents of each node. 
+
+\begin{DoxyReturn}{Returns}
+preordered vector of the elements of the tree 
+\end{DoxyReturn}

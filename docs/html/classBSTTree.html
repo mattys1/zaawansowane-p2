@@ -104,6 +104,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6552bd690990f210c8375abddec863f9" id="r_a6552bd690990f210c8375abddec863f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6552bd690990f210c8375abddec863f9">add</a> (const T &amp;element)</td></tr>
 <tr class="memdesc:a6552bd690990f210c8375abddec863f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a single element to the tree.  <br /></td></tr>
 <tr class="separator:a6552bd690990f210c8375abddec863f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bc1f5e203aae9a9cf58e7a36390f403" id="r_a6bc1f5e203aae9a9cf58e7a36390f403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bc1f5e203aae9a9cf58e7a36390f403">delete_tree</a> (void)</td></tr>
+<tr class="separator:a6bc1f5e203aae9a9cf58e7a36390f403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7415105f3b7023a53ea7def24b4b04" id="r_add7415105f3b7023a53ea7def24b4b04"><td class="memItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add7415105f3b7023a53ea7def24b4b04">traverse_preorder</a> (void)</td></tr>
+<tr class="memdesc:add7415105f3b7023a53ea7def24b4b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverse the tree in the preorder direction and return a vector the contents of each node.  <br /></td></tr>
+<tr class="separator:add7415105f3b7023a53ea7def24b4b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed009f5d4b05ced9e7b661046bbdb8e2" id="r_aed009f5d4b05ced9e7b661046bbdb8e2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed009f5d4b05ced9e7b661046bbdb8e2">traverse_inorder</a> ()</td></tr>
+<tr class="memdesc:aed009f5d4b05ced9e7b661046bbdb8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverse the tree in the inorder direction and return a vector the contents of each node.  <br /></td></tr>
+<tr class="separator:aed009f5d4b05ced9e7b661046bbdb8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e07048ad982d97bf430821603f11daf" id="r_a4e07048ad982d97bf430821603f11daf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e07048ad982d97bf430821603f11daf">traverse_postorder</a> ()</td></tr>
+<tr class="memdesc:a4e07048ad982d97bf430821603f11daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverse the tree in the postorder direction and return a vector the contents of each node.  <br /></td></tr>
+<tr class="separator:a4e07048ad982d97bf430821603f11daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a78c52ede983c4b795b5c59c39a23765e" name="a78c52ede983c4b795b5c59c39a23765e"></a>
@@ -214,7 +225,130 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Add a single element to the tree. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>element of T to insert to the tree</td></tr>
+  </table>
+  </dd>
+</dl>
 <p>This operation happens recursively </p>
+
+</div>
+</div>
+<a id="a6bc1f5e203aae9a9cf58e7a36390f403" name="a6bc1f5e203aae9a9cf58e7a36390f403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bc1f5e203aae9a9cf58e7a36390f403">&#9670;&#160;</a></span>delete_tree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classBSTTree.html">BSTTree</a>&lt; T &gt;::delete_tree </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed009f5d4b05ced9e7b661046bbdb8e2" name="aed009f5d4b05ced9e7b661046bbdb8e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed009f5d4b05ced9e7b661046bbdb8e2">&#9670;&#160;</a></span>traverse_inorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; T &gt; <a class="el" href="classBSTTree.html">BSTTree</a>&lt; T &gt;::traverse_inorder </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Traverse the tree in the inorder direction and return a vector the contents of each node. </p>
+<dl class="section return"><dt>Returns</dt><dd>inordered vector of the elements of the tree </dd></dl>
+
+</div>
+</div>
+<a id="a4e07048ad982d97bf430821603f11daf" name="a4e07048ad982d97bf430821603f11daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e07048ad982d97bf430821603f11daf">&#9670;&#160;</a></span>traverse_postorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; T &gt; <a class="el" href="classBSTTree.html">BSTTree</a>&lt; T &gt;::traverse_postorder </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Traverse the tree in the postorder direction and return a vector the contents of each node. </p>
+<dl class="section return"><dt>Returns</dt><dd>postordered vector of the elements of the tree </dd></dl>
+
+</div>
+</div>
+<a id="add7415105f3b7023a53ea7def24b4b04" name="add7415105f3b7023a53ea7def24b4b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7415105f3b7023a53ea7def24b4b04">&#9670;&#160;</a></span>traverse_preorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; T &gt; <a class="el" href="classBSTTree.html">BSTTree</a>&lt; T &gt;::traverse_preorder </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Traverse the tree in the preorder direction and return a vector the contents of each node. </p>
+<dl class="section return"><dt>Returns</dt><dd>preordered vector of the elements of the tree </dd></dl>
 
 </div>
 </div>

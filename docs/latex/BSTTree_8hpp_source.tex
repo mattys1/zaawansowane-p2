@@ -4,58 +4,128 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBSTTree}{BSTTree}}\ \{}
-\DoxyCodeLine{00005\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{struct\ }Tree\ \{}
-\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ T\ contents;}
-\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ Tree*\ parent;}
-\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ Tree*\ left;}
-\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ Tree*\ right;}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ Tree(T\ \_contents,\ Tree*\ \_parent\ =\ \textcolor{keyword}{nullptr},\ Tree*\ \_left\ =\ \textcolor{keyword}{nullptr},\ Tree*\ \_right\ =\ \textcolor{keyword}{nullptr}):}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ contents\ \{\ \_contents\ \},}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ parent\ \{\ \_parent\ \},}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ left\ \{\ \_left\ \},}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ right\ \{\ \_right\ \}\ \{\}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \string~Tree()\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ left;}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ right;}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00022\ \ \ \ \ \};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ Tree*\ root;}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <ranges>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBSTTree}{BSTTree}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{struct\ }Tree\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ T\ contents;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ Tree*\ parent;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ Tree*\ left;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ Tree*\ right;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ Tree(T\ \_contents,\ Tree*\ \_parent\ =\ \textcolor{keyword}{nullptr},\ Tree*\ \_left\ =\ \textcolor{keyword}{nullptr},\ Tree*\ \_right\ =\ \textcolor{keyword}{nullptr}):}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ contents\ \{\ \_contents\ \},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ parent\ \{\ \_parent\ \},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ left\ \{\ \_left\ \},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ right\ \{\ \_right\ \}\ \{\}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \string~Tree()\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ left;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ right;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \};}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ recursive\_add(\textcolor{keyword}{const}\ T\&\ element,\ Tree*\ node,\ Tree*\ parentNode\ =\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node\ ==\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \textcolor{keyword}{new}\ Tree(element);}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>parent\ =\ parentNode;}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node-\/>contents\ >=\ parentNode-\/>contents)\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>right\ =\ node;}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>left\ =\ node;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(element\ >=\ node-\/>contents)\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ recursive\_add(element,\ node-\/>right,\ node);}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ recursive\_add(element,\ node-\/>left,\ node);}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ Tree*\ root;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ recursive\_add(\textcolor{keyword}{const}\ T\&\ element,\ Tree*\ node,\ Tree*\ parentNode\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \textcolor{keyword}{new}\ Tree(element);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(parentNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>parent\ =\ parentNode;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node-\/>contents\ >=\ parentNode-\/>contents)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>right\ =\ node;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>left\ =\ node;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classBSTTree_a78c52ede983c4b795b5c59c39a23765e}{BSTTree}}(\textcolor{keyword}{const}\ T\&\ element):\ root\ \{\ new\ Tree(element)\ \}\ \{\}}
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classBSTTree_aedacc70bd91f6b71ba1f65060cd8eb2b}{BSTTree}}(\textcolor{keywordtype}{void}):\ root\ \{\ nullptr\ \}\ \{\}}
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classBSTTree_a24051e74f77211f301c69447064fbbfc}{\string~BSTTree}}()\ \{\ \textcolor{keyword}{delete}\ root;\ \}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBSTTree_a6552bd690990f210c8375abddec863f9}{add}}(\textcolor{keyword}{const}\ T\&\ element)\ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ recursive\_add(element,\ root);}
-\DoxyCodeLine{00057\ \ \ \ \ \}}
-\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(element\ >=\ node-\/>contents)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ recursive\_add(element,\ node-\/>right,\ node);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ recursive\_add(element,\ node-\/>left,\ node);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ preorder\_traverse\_recursive(Tree*\ node,\ std::vector<Tree*>\&\ traversedTrees)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ traversedTrees.push\_back(node);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ preorder\_traverse\_recursive(node-\/>left,\ traversedTrees);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ preorder\_traverse\_recursive(node-\/>right,\ traversedTrees);}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ inorder\_traverse\_recursive(Tree*\ node,\ std::vector<Tree*>\&\ traversedTrees)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ inorder\_traverse\_recursive(node-\/>left,\ traversedTrees);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ traversedTrees.push\_back(node);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ inorder\_traverse\_recursive(node-\/>right,\ traversedTrees);}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ postorder\_traverse\_recursive(Tree*\ node,\ std::vector<Tree*>\&\ traversedTrees)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ postorder\_traverse\_recursive(node-\/>left,\ traversedTrees);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ postorder\_traverse\_recursive(node-\/>right,\ traversedTrees);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ traversedTrees.push\_back(node);}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{classBSTTree_a78c52ede983c4b795b5c59c39a23765e}{BSTTree}}(\textcolor{keyword}{const}\ T\&\ element):\ root\ \{\ new\ Tree(element)\ \}\ \{\}}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{classBSTTree_aedacc70bd91f6b71ba1f65060cd8eb2b}{BSTTree}}(\textcolor{keywordtype}{void}):\ root\ \{\ nullptr\ \}\ \{\}}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{classBSTTree_a24051e74f77211f301c69447064fbbfc}{\string~BSTTree}}()\ \{\ \textcolor{keyword}{delete}\ root;\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBSTTree_a6552bd690990f210c8375abddec863f9}{add}}(\textcolor{keyword}{const}\ T\&\ element)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ recursive\_add(element,\ root);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBSTTree_a6bc1f5e203aae9a9cf58e7a36390f403}{delete\_tree}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ root;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ root\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{classBSTTree_add7415105f3b7023a53ea7def24b4b04}{traverse\_preorder}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ std::vector<Tree*>\ traversedTrees;}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ preorder\_traverse\_recursive(root,\ traversedTrees);}
+\DoxyCodeLine{00112\ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ traversedTrees\ |\ std::ranges::views::transform([](\textcolor{keyword}{const}\ Tree*\ tree)\ \{\ \textcolor{keywordflow}{return}\ tree-\/>contents;\ \})\ |\ std::ranges::to<std::vector>();\ }
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00118\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{classBSTTree_aed009f5d4b05ced9e7b661046bbdb8e2}{traverse\_inorder}}()\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ std::vector<Tree*>\ traversedTrees;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ inorder\_traverse\_recursive(root,\ traversedTrees);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ traversedTrees\ |\ std::ranges::views::transform([](\textcolor{keyword}{const}\ Tree*\ tree)\ \{\ \textcolor{keywordflow}{return}\ tree-\/>contents;\ \})\ |\ std::ranges::to<std::vector>();\ }
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00128\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{classBSTTree_a4e07048ad982d97bf430821603f11daf}{traverse\_postorder}}()\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ std::vector<Tree*>\ traversedTrees;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ postorder\_traverse\_recursive(root,\ traversedTrees);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ traversedTrees\ |\ std::ranges::views::transform([](\textcolor{keyword}{const}\ Tree*\ tree)\ \{\ \textcolor{keywordflow}{return}\ tree-\/>contents;\ \})\ |\ std::ranges::to<std::vector>();\ }
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \};}
 
 \end{DoxyCode}

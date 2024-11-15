@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]]
+  ['delete_5ftree_0',['delete_tree',['../classBSTTree.html#a6bc1f5e203aae9a9cf58e7a36390f403',1,'BSTTree']]]
 ];
