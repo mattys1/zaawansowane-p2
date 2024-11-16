@@ -27,7 +27,7 @@ private:
 
 	Tree* root;
 
-	void recursive_add(const T& element, Tree* node, Tree* parentNode = nullptr) {
+	void recursive_add(const T& element, Tree*& node, Tree* parentNode = nullptr) {
 		if(node == nullptr) {
 			node = new Tree(element);
 
