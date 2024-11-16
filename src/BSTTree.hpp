@@ -2,6 +2,8 @@
 
 #include <ranges>
 #include <vector>
+#include <algorithm>
+
 template <typename T>
 class BSTTree {
 private:
@@ -109,7 +111,7 @@ public:
 		std::vector<Tree*> traversedTrees;
 	
 		preorder_traverse_recursive(root, traversedTrees);
-	
+
 		return traversedTrees | std::ranges::views::transform([](const Tree* tree) { return tree->contents; }) | std::ranges::to<std::vector>(); 
 	}
 
@@ -131,5 +133,49 @@ public:
 		postorder_traverse_recursive(root, traversedTrees);
 
 		return traversedTrees | std::ranges::views::transform([](const Tree* tree) { return tree->contents; }) | std::ranges::to<std::vector>(); 
+	}
+
+	/// Delete an element of a given value
+	/// @param value The value of an element that is to be deleted.
+	///
+	/// This does not differentiate between unique elements of the same value
+	int delete_element(T value) {
+		std::vector<Tree*> traversedTrees;
+		inorder_traverse_recursive(root, traversedTrees);
+		auto elementOfValueIterator = std::find_if(traversedTrees.begin(), traversedTrees.end(), 
+											 [&value](const Tree* tree) { return tree->contents == value;});
+
+		if(elementOfValueIterator == traversedTrees.end()) {
+			return -1;
+		}
+
+		Tree* elementOfValue { *elementOfValueIterator };
+
+		if(elementOfValue->left == nullptr && elementOfValue->right == nullptr) {
+			if(elementOfValue->parent != nullptr) {
+				if(elementOfValue->parent->left == elementOfValue) {
+					elementOfValue->parent->left = nullptr;
+				} else {
+					elementOfValue->parent->right = nullptr;
+				}
+			}
+
+			delete elementOfValue;
+		} else {
+			Tree* successor = *std::next(elementOfValueIterator);
+
+			if(successor->parent != nullptr) {
+				if(successor->parent->left == successor) {
+					successor->parent->left = nullptr;
+				} else {
+					successor->parent->right = nullptr;
+				}
+			}
+
+			elementOfValue->contents = successor->contents;
+			delete successor;
+		}
+
+		return 0;
 	}
 };

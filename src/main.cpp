@@ -30,6 +30,31 @@ int main (int argc, char *argv[]) {
 		std::print("{},", item);
 	}
 
+	std::println();
+
+	std::println("Deleting 1 and 5");
+	tree.delete_element(1);
+	tree.delete_element(5);
+
+	std::println("Preorder traversal:");
+	for(const auto item : tree.traverse_preorder()) {
+		std::print("{},", item);
+	}
+
+	std::println();
+
+	std::println("Inorder traversal:");
+	for(const auto item : tree.traverse_inorder()) {
+		std::print("{},", item);
+	}
+
+	std::println();
+
+	std::println("Postorder: traversal:");
+	for(const auto item : tree.traverse_postorder()) {
+		std::print("{},", item);
+	}
+
 	tree.delete_tree();
 
 	tree.add(8);
