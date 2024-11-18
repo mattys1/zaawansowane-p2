@@ -5,44 +5,98 @@
 
 \subsection{Ogólne informacje o implementacji klasy}
 
-Lista jest zaimplementowana jako jeden plik \texttt{.hpp}. Nie jest podzielona na plik implementacji oraz nagłówek, ponieważ jest ona szablonem. Deklaracja klasy oraz prywatne elementy wyglądają następująco:
+Drzewo jest zaimplementowane jako jeden plik \texttt{.hpp}. Nie jest podzielone na plik implementacji oraz nagłówek, ponieważ jest ono szablonem. Deklaracja klasy oraz prywatne elementy wyglądają następująco:
 
-\begin{lstlisting}[caption=Deklaracja szblonu listy, label={lst:list_dec}, language=C++]
-	template<typename T>
-	class DoubleLinkedList {
-	private:
-	struct Node {
-		Node* previous;
-		Node* next;
-		T contents;
-
-		Node(Node* oPrevious, Node* oNext, T oContents): 
-			previous { oPrevious },
-			next { oNext },
-			contents { oContents } {}
-
-		~Node(void) {
-			delete next;
+\begin{lstlisting}[caption=Deklaracja drzewa BST, label={lst:BSTprivate}, language=C++]
+	template <typename T>
+	class BSTTree {
+		private:
+		struct Tree {
+			T contents;
+			Tree* parent;
+			Tree* left;
+			Tree* right;
+			
+			Tree(T _contents, Tree* _parent = nullptr, Tree* _left = nullptr, Tree* _right = nullptr):
+			contents { _contents },
+			parent { _parent },
+			left { _left },
+			right { _right } {}
+			
+			~Tree() {
+				delete left;
+				delete right;
+			}
+		};
+		
+		Tree* root;
+		
+		void recursive_add(const T& element, Tree*& node, Tree* parentNode = nullptr) {
+			if(node == nullptr) {
+				node = new Tree(element);
+				
+				if(parentNode == nullptr) {
+					return;
+				}
+				
+				node->parent = parentNode;
+				
+				if(node->contents >= parentNode->contents) {
+					parentNode->right = node;
+				} else {
+					parentNode->left = node;
+				}
+				
+				return;
+			}
+			
+			if(element >= node->contents) {
+				recursive_add(element, node->right, node);
+			} else {
+				recursive_add(element, node->left, node);
+			}	
 		}
-	};
-
-	Node* head;
-	Node* tail;
-
-	Node* get_node_at(size_t index) {
-		Node* currentNode { head };
-		for(size_t i {}; i < index; i++) {
-			currentNode = currentNode->next;
+		
+		void preorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) {
+			if(node == nullptr) {
+				return;
+			}
+			
+			traversedTrees.push_back(node);
+			
+			preorder_traverse_recursive(node->left, traversedTrees);
+			preorder_traverse_recursive(node->right, traversedTrees);
 		}
-
-		return currentNode;
-	}
-
-public:
-	...
+		
+		void inorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) {
+			if(node == nullptr) {
+				return;
+			}
+			
+			inorder_traverse_recursive(node->left, traversedTrees);
+			
+			traversedTrees.push_back(node);
+			
+			inorder_traverse_recursive(node->right, traversedTrees);
+		}
+		
+		void postorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) {
+			if(node == nullptr) {
+				return;
+			}
+			
+			postorder_traverse_recursive(node->left, traversedTrees);
+			postorder_traverse_recursive(node->right, traversedTrees);
+			
+			traversedTrees.push_back(node);
+		}
+		public:
+		...
 \end{lstlisting}
 
-Jak widać w kodzie \ref{lst:list_dec}., Klasa jest wrapperem dla structa \texttt{Node}. Struct ten ma dwa wskaźniki - \texttt{next} dla elementu następnego i \texttt{previous} dla elementu poprzedniego. Jego konstruktor pozwala od razu ustawiać zawartość oraz te wskaźniki Metoda \texttt{get\_node\_at()} jest pomocniczą metodą pozwalającą uzyskać wskaźnik do \texttt{Node} o danym indeksie, podążając w przód od wskaźnika head, \texttt{index} razy.
+Jak widać w kodzie \ref{lst:BSTprivate}., Klasa jest wrapperem dla structa \texttt{Tree}. Struct ten ma trzy wskaźniki - \texttt{left} dla elementu lewego, \texttt{right} dla elementu prawego, \texttt{parent} dla elementu będącego rodzicem oraz zawartość \texttt{contents} nie będącą wskaźnikiem. W linii 10 znajduje się konstruktor, który ustawia wartości wskaźników rodzica, dziecka lewego oraz prawego na null.
+Od linii 11 do 14 jest konstruktor który pozwala ustawić wskaźniki i wymaga ustawienia zawartości.
+Od linii 16 do 18 znajduje się destruktor drzewa. W destruktorze węzeł lewy i prawy jest usuwany.
 
 Manipulacje strukturą listy odbywają się poprzez szereg metod publicznych. Wiele z nich posiada podobną strukturę. Za przykład jednej z nich można wziąć \texttt{prepend()}:
 
