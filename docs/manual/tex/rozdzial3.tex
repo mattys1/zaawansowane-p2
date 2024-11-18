@@ -8,7 +8,24 @@
 \subsection{Implementacja drzewa BTS}
 
 
-Do zaimplementowania drzewa BTS zostanie użyty Język \texttt{C++} z kompilatorem \texttt{g++}. Wersja standardu \texttt{C++}to \texttt{C++23}. Wersja ta została użyta, ze względu na zawartą w niej funkcję \texttt{std::print()}. Jako, że projekt ma być rozdzielony na dwa pliki, zostanie zastosowany \texttt{CMake} w celu automatyzacji procesu budowania. \texttt{CMake} pozwala na generowanie plików budujących dany projekt, zgodnie z określoną konfiguracją. Oszczędza to programiście, szczególnie przy większych projektach, manualne pisanie Makefileów.
+Do zaimplementowania drzewa BTS zostanie użyty Język \texttt{C++} z kompilatorem \texttt{g++} oraz \texttt{MVSC}. Wersja standardu \texttt{C++}to \texttt{C++23}. Wersja ta została użyta, ze względu na zawartą w niej funkcję \texttt{std::print()}. Jako, że projekt ma być rozdzielony na dwa pliki, zostanie zastosowany \texttt{CMake} w celu automatyzacji procesu budowania. \texttt{CMake} pozwala na generowanie plików budujących dany projekt, zgodnie z określoną konfiguracją. Oszczędza to programiście, szczególnie przy większych projektach, manualne pisanie Makefileów.
+Plik konfiguracyjny \texttt{CMakeLists.txt} może wygląDać jak na rysunku
+
+\begin{lstlisting}[caption=Plik konfiguracyjny CMake, label={lst:cmakelists}, language=C++]
+	cmake_minimum_required(VERSION 3.5)
+	
+	set(PROJECT_NAME proj1)
+	
+	project(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX)
+	
+	set(CMAKE_CXX_STANDARD 23)
+	set(CMAKE_CXX_STANDARD_REQUIRED ON)
+	set(CMAKE_EXPORT_COMPILE_COMMANDS True)
+	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/out)
+	
+	add_subdirectory(src)
+	
+\end{lstlisting}
 
 Edytorem będzie program Neovim oraz Visual Studio 2022. Jest to terminalowy edytor tekstu z możliwością poszerzenia funkcjonalności przy użyciu wszelkiego rodzaju pluginów. Wybrany został, dlatego że jest on już skonfigurowany na moim komputerze zgodnie z moimi preferencjami.
 \subsection{Git}
