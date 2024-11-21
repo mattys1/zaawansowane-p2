@@ -1,86 +1,103 @@
 #include "BSTTree.hpp"
+#include "FileTree.hpp"
 #include <print>
+#include <iostream>
+#include <string>
 
-int main (int argc, char *argv[]) {
-	BSTTree<int> tree(5);
-	BSTTree<int> tree2;
 
-	tree.add(2);
-	tree.add(3);
-	tree.add(10);
-	tree.add(7);
-	tree.add(1);
+bool lauf()
+{
+    std::string input;
+    std::cout << "\nDo you want to repeat? (type yes ocontinue, no to stop): ";
+    std::cin >> input;
+    do {
+        if (input == "Yes" || input == "yes") {
+            return true;
+        }
+        else if (input == "no" || input == "No") {
+            return false;
+        }
+        else {
+            std::cout << "insert ONLY yes or no";
+            std::cin >> input;
+        }
+    } while (true);
 
-	std::println("Preorder traversal:");
-	for(const auto item : tree.traverse_preorder()) {
-		std::print("{},", item);
-	}
+}
 
-	std::println();
+int main(int argc, char* argv[]) {
+    BSTTree<int> tree;
+    BSTTree<int> tree2;
+    std::vector<int> elements;
 
-	std::println("Inorder traversal:");
-	for(const auto item : tree.traverse_inorder()) {
-		std::print("{},", item);
-	}
+    int option;
+    int option2;
+    int value;
+    std::println("List of options:");
+    std::println("1 - add element | 2 - remove element | 3 - print traversal preordern");
+    std::println("4 - print traversal inorder | 5 - print traversal postorder | 6 - export to file");
+    std::println("7 - import from file | 8 - delete tree | 9 - fid path to element");
+    std::println();
+    do {
+        std::print("What do you want to do? "), std::cin >> option;
+        switch (option) {
+        case 1:
+            std::print("Insert element to add: ");
+            std::cin >> value;
+            tree.add(value);
+            elements.push_back(value);
+            break;
 
-	std::println();
+        case 2:
+            std::print("Insert element to remove: ");
+            std::cin >> value;
+            tree.delete_element(value);
+            break;
 
-	std::println("Postorder: traversal:");
-	for(const auto item : tree.traverse_postorder()) {
-		std::print("{},", item);
-	}
+        case 3:
+            std::print("Preorder traversal:\n");
+            for (const auto& item : tree.traverse_preorder()) {
+                std::print("{}, ", item);
+            }
+            std::print("\n");
+            break;
 
-	std::println();
+        case 4:
+            std::print("Inorder traversal:\n");
+            for (const auto& item : tree.traverse_inorder()) {
+                std::print("{}, ", item);
+            }
+            std::print("\n");
+            break;
 
-	std::println("Deleting 1 and 5");
-	tree.delete_element(1);
-	tree.delete_element(5);
+        case 5:
+            std::print("Postorder traversal:\n");
+            for (const auto& item : tree.traverse_postorder()) {
+                std::print("{}, ", item);
+            }
+            std::print("\n");
+            break;
 
-	std::println("Preorder traversal:");
-	for(const auto item : tree.traverse_preorder()) {
-		std::print("{},", item);
-	}
+        case 6:
+            break;
 
-	std::println();
+        case 7:
+            break;
 
-	std::println("Inorder traversal:");
-	for(const auto item : tree.traverse_inorder()) {
-		std::print("{},", item);
-	}
+        case 8:
+            tree.delete_tree();
+            std::print("Tree deleted.\n");
+            break;
 
-	std::println();
+        case 9: {
+            break;
+        }
 
-	std::println("Postorder: traversal:");
-	for(const auto item : tree.traverse_postorder()) {
-		std::print("{},", item);
-	}
+        default:
+            std::print("Invalid option. Try again.\n");
+            break;
+        }
+    } while (lauf());
 
-	tree.delete_tree();
-
-	tree.add(8);
-	tree.add(2);
-	tree.add(9);
-
-	std::println("After deleting the entire tree:");
-
-	std::println("Preorder traversal:");
-	for(const auto item : tree.traverse_preorder()) {
-		std::print("{},", item);
-	}
-
-	std::println();
-
-	std::println("Inorder traversal:");
-	for(const auto item : tree.traverse_inorder()) {
-		std::print("{},", item);
-	}
-
-	std::println();
-
-	std::println("Postorder: traversal:");
-	for(const auto item : tree.traverse_postorder()) {
-		std::print("{},", item);
-	}
-
-	return 0;
+    return 0;
 }
