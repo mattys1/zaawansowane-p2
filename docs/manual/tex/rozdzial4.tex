@@ -3,7 +3,9 @@
 %Opisać implementacje algorytmu/programu. Pokazać ciekawe fragmenty kodu
 %Opisać powstałe wyniki (algorytmu/nrzędzia)
 
-\subsection{Ogólne informacje o implementacji klasy}
+\subsection{Ogólne informacje o implementacji klas}
+
+\subsubsection{Klasa BSTTree}
 
 Drzewo jest zaimplementowane jako jeden plik \texttt{.hpp}. Nie jest podzielone na plik implementacji oraz nagłówek, ponieważ jest ono szablonem. Deklaracja klasy oraz prywatne elementy wyglądają następująco:
 
@@ -91,7 +93,7 @@ Drzewo jest zaimplementowane jako jeden plik \texttt{.hpp}. Nie jest podzielone 
 			traversedTrees.push_back(node);
 		}
 		public:
-		...
+			...
 \end{lstlisting}
 
 Jak widać w kodzie zamieszczonym na listingu nr. \ref{lst:BSTprivate}., Klasa jest wrapperem dla structa \texttt{Tree}, zadeklarowanego na linijce nr. 4. Struct ten ma trzy wskaźniki - \texttt{left} dla elementu lewego, \texttt{right} dla elementu prawego, \texttt{parent} dla elementu będącego rodzicem oraz zawartość \texttt{contents}, opsującą element zawarty w danym węźle. 
@@ -99,5 +101,7 @@ Jak widać w kodzie zamieszczonym na listingu nr. \ref{lst:BSTprivate}., Klasa j
 W linii 10 zadeklarowany jest konstruktor, który domyślnie ustawia wartości wskaźników rodzica, dziecka lewego oraz prawego na \texttt{nullptr}. Istnieje możliwość sprecyzowania wartości wskaźników.
 
 Od linii 16 do 18 znajduje się destruktor drzewa. W destruktorze węzeł lewy i prawy jest usuwany.
+
+Od linijki nr. 24, do końca fragmentu, zawarty jest szereg pomocniczych metod prywatnych. Ich działanie zostanie omówione przy dyskusji korzystających z nich metod publicznych.
 
 \subsection{Ciekawe fragmenty kodu}
