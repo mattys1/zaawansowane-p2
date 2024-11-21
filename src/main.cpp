@@ -28,6 +28,7 @@ bool lauf()
 int main(int argc, char* argv[]) {
     BSTTree<int> tree;
     BSTTree<int> tree2;
+    FileTree<int> fileTree;
     std::vector<int> elements;
 
     int option;
@@ -79,11 +80,32 @@ int main(int argc, char* argv[]) {
             break;
 
         case 6:
+            std::print("1 - To text | 2 - To binary\n");
+            std::print("Do you want to export to text or binary file? ");
+            std::cin >> option2;
+            if (option2 == 1) {
+                fileTree.save_to_text("tree.txt", elements);
+                std::print("Tree saved to text file.\n");
+            }
+            else if (option2 == 2) {
+                fileTree.save_to_binary("tree.bin", elements);
+                std::print("Tree saved to binary file.\n");
+            }
             break;
 
         case 7:
+            std::print("1 - From text | 2 - From binary\n");
+            std::print("Do you want to import from text or binary file? ");
+            std::cin >> option2;
+            if (option2 == 1) {
+                fileTree.load_from_text("tree.txt", tree, elements);
+                std::print("Tree loaded from text file.\n");
+            }
+            else if (option2 == 2) {
+                fileTree.load_from_binary("tree.bin", tree, elements);
+                std::print("Tree loaded from binary file.\n");
+            }
             break;
-
         case 8:
             tree.delete_tree();
             std::print("Tree deleted.\n");
