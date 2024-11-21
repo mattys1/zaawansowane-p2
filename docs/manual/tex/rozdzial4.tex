@@ -104,4 +104,40 @@ Od linii 16 do 18 znajduje się destruktor drzewa. W destruktorze węzeł lewy i
 
 Od linijki nr. 24, do końca fragmentu, zawarty jest szereg pomocniczych metod prywatnych. Ich działanie zostanie omówione przy dyskusji korzystających z nich metod publicznych.
 
+Jedną z tych metod publicznych jest \texttt{add()}, którą widać na listingu nr. \ref{lst:BSTadd}
+
+\begin{lstlisting}[caption=Metoda \texttt{add()}, label={lst:BSTadd}, language=C++]
+	void add(const T& element) {
+		recursive_add(element, root);
+	}
+
+\end{lstlisting}
+
+Metoda ta przyjmuje parametr \texttt{element}, który będzie wartością nowo dodanego węzła. W swoim ciele, wywołuje ona prywatną metodę \texttt{recursive\_add()} z parametrami \texttt{element} i korzeniem drzewa \texttt{root}. Jej definicja jest zawarta w linijce 24, listingu nr. \ref{lst:BSTprivate}. 
+
+Metoda \texttt{recursive\_add()} działa na zasadzie rekurencji. Na początku funkcji sprawdzane jest czy teraźniejszy \texttt{node} to \texttt{nullptr}. Jeżeli tak, oznacza to, że doszło się do końca drzewa i można ten wskaźnik ustawić jako nowy węzeł. Na linijce nr. 28, sprawdzane jest czy rodzic wskaźnika \texttt{node} to \texttt{nullptr}. Jeżeli tak, oznaczałoby to, że pracujemy ze wskaźnikiem \texttt{root}. Wracamy wtedy wcześnie z funkcji, dlatego że \texttt{root} nie ma rodzica, więc nie chcemy manipulować wskaźnikami tego rodzica. Następnie, po zakończeniu bloku \texttt{if}, ustawiane są wskaźniki rodzica. Na linijce nr. 43, metoda wywoływana jest ponownie, w zależności od tego czy zawartość \texttt{node} jest większa od liczby która ma być dodana, czy nie.
+
+Kolejną metodą na jaką można zwrócić uwagę to \texttt{traverse\_preorder()}, zawarta na listingu nr. \ref{lst:BSTtraverse_preorder}. 
+
+\begin{lstlisting}[caption=Metoda \texttt{add()}, label={lst:BSTtraverse_preorder}, language=C++]
+	std::vector<T> traverse_preorder(void) {
+		std::vector<Tree*> traversedTrees;
+	
+		preorder_traverse_recursive(root, traversedTrees);
+
+		return traversedTrees 
+		| std::ranges::views::transform(
+				[](const Tree* tree) { return tree->contents; }
+		) 
+		| std::ranges::to<std::vector>(); 
+	}
+
+\end{lstlisting}
+
+Metoda \texttt{traverse\_preorder()}, ma za zadanie zwrócić wektor wartości węzłów ułożonych w kolejności preorder drzewa. Ku temu celu, na początku metody, w linijce nr. 2 listingu nr. \ref{lst:BSTtraverse_preorder}, deklarowany jest wektor \texttt{traversedTrees}, który będzie wypełniony wskaźnikami \texttt{Tree*} w kolejności preorder. Do wypełnienia tego wektora, używana jest prywatna metoda \texttt{preorder\_traverse\_recursive()} z parametrami \texttt{root} i \texttt{traversedTrees}.
+
+Metoda \texttt{preorder\_traverse\_recursive()}, podobnie jak inne prywatne metody jest zawarta na listingu nr. \ref{lst:BSTprivate}, konkretnie od linijki nr. 50 do linijki nr. 59. Na początku metody, sprawdzane jest czy parametr \texttt{node} jest równy \texttt{nullptr} - oznaczałoby to, że dotarło się do końca danej ścieżki w drzewie i należy się wrócić. Następnie bieżący \texttt{node} jest pushowany do wektora \texttt{traversedTrees}, po czym w linijkach nr. 57 i 58, wywoływana jest dwukrotnie metoda \texttt{preorder\_traverse\_recursive()}. Za pierwszym razem na lewy, węzeł, a za drugim na prawym. Takie wywołanie sprawi, że najpierw odwiedzone zostaną lewe gałęzie, a dopiero później prawe, zgodnie z porządkiem preorder.
+
+Wracając z metody \texttt{preorder\_traverse\_recursive()} do metody \texttt{traverse\_preorder()} i listingu nr. \ref{lst:BSTtraverse_preorder}, w linijce nr. 6, widać że do \texttt{traversedTrees} aplikowana jest transformacja przy użyciu biblioteki \texttt{std::ranges}, powodująca, że zwrócony zostanie wektor zawartości poszczególnych węzłów. 
+
 \subsection{Ciekawe fragmenty kodu}
