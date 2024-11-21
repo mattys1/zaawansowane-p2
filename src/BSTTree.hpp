@@ -231,4 +231,37 @@ public:
         }
         return 0;
     }
+
+
+    /**
+    * @brief Finds the path to a node with the given value in a binary search tree.
+    *
+    * This function searches for a value in a binary search tree and returns the path
+    * from the root to the node containing the value. If the value is not found, it returns
+    * an empty vector.
+    *
+    * @tparam T The type of the values in the tree nodes.
+    * @param value The value to search for in the tree.
+    * @return std::vector<T> A vector with the path to the value, or an empty vector if not found.
+    */
+    std::vector<T> find_path(const T& value) {
+        std::vector<T> path;
+        Tree* curr = root;
+
+        while (root != nullptr) {
+            path.push_back(curr->contents);
+
+            if (curr->contents == value) {
+                return path;
+            }
+            else if (value < curr->contents) {
+                curr = curr->left;
+            }
+            else {
+                curr = curr->right;
+            }
+        }
+        return {};
+    }
+
 };

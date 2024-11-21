@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
     std::println();
     do {
         std::print("What do you want to do? "), std::cin >> option;
+
         switch (option) {
         case 1:
             std::print("Insert element to add: ");
@@ -112,8 +113,21 @@ int main(int argc, char* argv[]) {
             break;
 
         case 9: {
-            break;
+            std::print("Input the value to search: "), std::cin >> value;
+            auto path = tree.find_path(value);
+            if (path.empty()) {
+                std::print("Element not found.\n");
+            }
+            else {
+                std::print("Path: ");
+                for (const auto& item : path) {
+                    std::print("{} ", item);
+                }
+                std::print("\n");
+            }
         }
+            break;
+        
 
         default:
             std::print("Invalid option. Try again.\n");
