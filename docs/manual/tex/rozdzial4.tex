@@ -437,7 +437,7 @@ Następnie w wierszach od 13 do 18 sczytywane są wszystkie wartości oraz dodaw
 Na listingu nr \ref{lst:main-class} przedstawiona jest klasa main. Klasa main odpowiedzialna jest za sterowaniem operacjami na drzewie binarnym. Do przeprowadzania operacji stworzone zostało menu, które podgląd wyboru dostępnych opcji oraz prośbę o wybranie opcji działania.
 Następnie, w zależności od wyboru opcji instrukcja switch wywołuje odpowiednią metodę z klasy \texttt{BSTTree}.
 Po wykonaniu operacji wyświetlany jest komunikat o kontynuacji lub zakończeniu działania programu. Wykorzystywana jest do tego funkcja "bool lauf" przedstawiona na listingu nr \ref{lst:main-lauf}
-\begin{lstlisting}[caption=Klasa \texttt{main}, label={lst:main-lauf}, language=C++]
+\begin{lstlisting}[caption=Funkcja \texttt{lauf()}, label={lst:main-lauf}, language=C++]
 	bool lauf()
 	{
 		std::string input;
@@ -456,5 +456,24 @@ Po wykonaniu operacji wyświetlany jest komunikat o kontynuacji lub zakończeniu
 \end{lstlisting}
 Funkcja jest odpowiedzialna za sprawdzanie czy podano poprawną wartość w komunikacje o kontynuacji lub zakończeniu programu.
 
-
 \subsection{Ciekawe fragmenty kodu}
+
+\begin{lstlisting}[caption=Metoda \texttt{delete\_element()}, label={lst:delete_element_excerpt}, language=C++]
+	int delete_element(T value) {
+	...
+		if (elementOfValue->left == nullptr && elementOfValue->right == nullptr) {
+			if (elementOfValue->parent != nullptr) {
+				if(elementOfValue->parent->left == elementOfValue) {
+					elementOfValue->parent->left = nullptr;
+				} else {
+					elementOfValue->parent->right = nullptr;
+				}
+			}
+
+			delete elementOfValue;
+		} else {
+	...
+	}
+\end{lstlisting}
+
+Na listingu nr. \ref{lst:delete_element_excerpt}, widać od linijki nr. 3 zanestowane zdania \texttt{if}. Służą one do sprawdzania, czy dziecko \texttt{elementOfValue} jest połączone z rodzicem od lewej czy prawej strony, po czym wskaźnik rodzica jest zmieniany na \texttt{nullptr}. Dlatego, że C++ nie posiada łatwej możliwości tworzenia referencji do wskaźników, np. przy użyciu operatora \texttt{?}, czy lambdy, należy użyć takich niezbyt ładnych zabiegów.
