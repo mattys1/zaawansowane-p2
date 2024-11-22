@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7edoublelinkedlist_0',['~DoubleLinkedList',['../classDoubleLinkedList.html#aebaa7216729c1d8175a31b7d7910650c',1,'DoubleLinkedList']]]
+  ['_7ebsttree_0',['~BSTTree',['../classBSTTree.html#a24051e74f77211f301c69447064fbbfc',1,'BSTTree']]]
 ];

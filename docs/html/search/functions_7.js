@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['rdisplay_0',['rdisplay',['../classDoubleLinkedList.html#a0ccf82f8b03b5f116590e16ea3fbcd57',1,'DoubleLinkedList']]],
-  ['rpop_1',['rpop',['../classDoubleLinkedList.html#a6a8c041f5f5d74710db38d516e314756',1,'DoubleLinkedList']]]
+  ['traverse_5finorder_0',['traverse_inorder',['../classBSTTree.html#af1501f0dc6c31a8926540b8d46ece220',1,'BSTTree']]],
+  ['traverse_5fpostorder_1',['traverse_postorder',['../classBSTTree.html#a460501e9d0358c0c85de096fc610154f',1,'BSTTree']]],
+  ['traverse_5fpreorder_2',['traverse_preorder',['../classBSTTree.html#a9c7b119c51a70da1075c5157eb6449f1',1,'BSTTree']]]
 ];
