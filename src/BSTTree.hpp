@@ -12,11 +12,6 @@
  /**
   * @class BSTTree
   * @brief A Binary Search Tree (BST) implementation for managing elements of type T.
-  *
-  * This class provides functionality to add, traverse, and delete elements from a binary search tree.
-  * The tree supports recursive traversal methods (preorder, inorder, postorder) and maintains its structure
-  * based on standard BST rules.
-  *
   * @tparam T The type of elements to be stored in the tree.
   */
 template <typename T>
@@ -26,17 +21,17 @@ private:
      * @brief Represents a single node in the Binary Search Tree.
      */
     struct Tree {
-        T contents;      ///< The data contained in the node.
-        Tree* parent;    ///< Pointer to the parent node.
-        Tree* left;      ///< Pointer to the left child.
-        Tree* right;     ///< Pointer to the right child.
+        T contents;
+        Tree* parent;
+        Tree* left;  
+        Tree* right;
 
         /**
          * @brief Constructs a Tree node with given parameters.
          * @param _contents The value to be stored in the node.
-         * @param _parent Pointer to the parent node (default is nullptr).
-         * @param _left Pointer to the left child (default is nullptr).
-         * @param _right Pointer to the right child (default is nullptr).
+         * @param _parent Pointer to the parent node.
+         * @param _left Pointer to the left child.
+         * @param _right Pointer to the right child.
          */
         Tree(T _contents, Tree* _parent = nullptr, Tree* _left = nullptr, Tree* _right = nullptr) :
             contents{ _contents }, parent{ _parent }, left{ _left }, right{ _right } {
@@ -51,7 +46,7 @@ private:
         }
     };
 
-    Tree* root; ///< Pointer to the root node of the tree.
+    Tree* root;
 
     /**
      * @brief Recursively adds an element to the tree.
@@ -160,8 +155,8 @@ public:
     }
 
     /**
-     * @brief Performs a preorder traversal of the tree.
-     * @return A vector containing the elements of the tree in preorder.
+     * @brief Traverse the tree in the preorder direction and return a vector the contents of each node.
+     * @return Preordered vector of the elements of the tree.
      */
     std::vector<T> traverse_preorder() const {
         std::vector<Tree*> traversedTrees;
@@ -170,8 +165,8 @@ public:
     }
 
     /**
-     * @brief Performs an inorder traversal of the tree.
-     * @return A vector containing the elements of the tree in inorder.
+     * @brief Traverse the tree in the inorder direction and return a vector the contents of each node.
+     * @return Inordered vector of the elements of the tree.    
      */
     std::vector<T> traverse_inorder() const {
         std::vector<Tree*> traversedTrees;
@@ -180,8 +175,8 @@ public:
     }
 
     /**
-     * @brief Performs a postorder traversal of the tree.
-     * @return A vector containing the elements of the tree in postorder.
+     * @brief Traverse the tree in the postorder direction and return a vector the contents of each node.
+     * @return Postordered vector of the elements of the tree.
      */
     std::vector<T> traverse_postorder() const {
         std::vector<Tree*> traversedTrees;
@@ -190,10 +185,10 @@ public:
     }
 
     /**
-     * @brief Deletes the first element with a specified value from the tree.
+     * @brief Delete an element of a given value.
      * @param value The value of the element to be deleted.
-     *
-     * The operation does not differentiate between duplicate elements with the same value.
+     * 
+     * This does not differentiate between unique elements of the same value.
      * @return 0 if the element was successfully deleted, -1 if the element was not found.
      */
     int delete_element(T value) {
@@ -234,15 +229,11 @@ public:
 
 
     /**
-    * @brief Finds the path to a node with the given value in a binary search tree.
+    * @brief Finds the path to a value in a binary search tree.
     *
-    * This function searches for a value in a binary search tree and returns the path
-    * from the root to the node containing the value. If the value is not found, it returns
-    * an empty vector.
-    *
-    * @tparam T The type of the values in the tree nodes.
-    * @param value The value to search for in the tree.
-    * @return std::vector<T> A vector with the path to the value, or an empty vector if not found.
+    * @tparam T The type of the tree values.
+    * @param value The value to find.
+    * @return std::vector<T> Path to the value or empty if not found.
     */
     std::vector<T> find_path(const T& value) {
         std::vector<T> path;
