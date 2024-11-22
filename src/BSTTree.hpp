@@ -194,11 +194,14 @@ public:
     int delete_element(T value) {
         std::vector<Tree*> traversedTrees;
         inorder_traverse_recursive(root, traversedTrees);
+
         auto elementOfValueIterator = std::find_if(traversedTrees.begin(), traversedTrees.end(),
             [&value](const Tree* tree) { return tree->contents == value; });
+
         if (elementOfValueIterator == traversedTrees.end()) {
             return -1;
         }
+
         Tree* elementOfValue{ *elementOfValueIterator };
         if (elementOfValue->left == nullptr && elementOfValue->right == nullptr) {
             if (elementOfValue->parent != nullptr) {
@@ -209,9 +212,9 @@ public:
                     elementOfValue->parent->right = nullptr;
                 }
             }
+
             delete elementOfValue;
-        }
-        else {
+        } else {
             Tree* successor = *std::next(elementOfValueIterator);
             if (successor->parent != nullptr) {
                 if (successor->parent->left == successor) {
@@ -224,6 +227,7 @@ public:
             elementOfValue->contents = successor->contents;
             delete successor;
         }
+
         return 0;
     }
 
