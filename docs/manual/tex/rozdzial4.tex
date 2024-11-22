@@ -140,7 +140,7 @@ Metoda \texttt{preorder\_traverse\_recursive()}, podobnie jak inne prywatne meto
 
 Wracając z metody \texttt{preorder\_traverse\_recursive()} do metody \texttt{traverse\_preorder()} i listingu nr \ref{lst:BSTtraverse_preorder}, w linijce nr. 6, widać że do \texttt{traversedTrees} aplikowana jest transformacja przy użyciu biblioteki \texttt{std::ranges}, powodująca, że zwrócony zostanie wektor zawartości poszczególnych węzłów.
 
-\subsection{Klasa FileTree} 
+\subsubsection{Klasa FileTree} 
 
 Głównym zadaniem klasy FileTree jest odczyt i zapis zawartość drzewa z, jak i do pliku. Odbywa się to na dwa sposoby: 1 - do zwykłego pliku tekstowego(.txt) oraz 2 - do pliku binarnego(.bin). Klasa zawiera 4 metody publiczne:
 \begin{itemize}
@@ -229,8 +229,9 @@ Klasa składa się z 4 metod publicznych, zadeklarowanych w wiersach: 5, 15, 31,
 		}
 	}
 \end{lstlisting}
-jak widać na listingu nr \ref{lst:FileTree-savetext} metoda ma dwa parametry: filename - które definiuje nazwę pliku do którego zostanie zapisana zawartosć tablicy oraz elements - który jest wektorem elementów które zostaną zapisane do pliku. Polecenie w wierszu 2 otwiera plik, jeżeli nie istnieje jest tworzony.
-Następnie w wierszu 3 mamy instrukcję if. Jeżeli plik nie może być otwarty wysyłany jest komunikat o błędzie. jeżeli plik się otworzy to w wierszu 7 zadeklarowana jest pętla która iteruje przez wszystkie elementy drzewa binarnego patrząc na kolejnosć ich dodania oraz dodaje je do pliku ooleceniem w wierszu 8.
+
+Jak widać na listingu nr \ref{lst:FileTree-savetext} metoda ma dwa parametry: filename - które definiuje nazwę pliku do którego zostanie zapisana zawartość tablicy oraz elements - który jest wektorem elementów które zostaną zapisane do pliku. Polecenie w wierszu 2 otwiera plik, jeżeli nie istnieje jest tworzony.
+Następnie w wierszu 3 mamy instrukcję if. Jeżeli plik nie może być otwarty wysyłany jest komunikat o błędzie. Jeżeli plik się otworzy, to w wierszu 7 zadeklarowana jest pętla która iteruje przez wszystkie elementy drzewa binarnego patrząc na kolejność ich dodania oraz dodaje je do pliku poleceniem w wierszu 8.
 
 
 \begin{lstlisting}[caption=Metoda \texttt{load\_to\_file}, label={lst:FileTree-loadtext}, language=C++]
@@ -252,10 +253,13 @@ Następnie w wierszu 3 mamy instrukcję if. Jeżeli plik nie może być otwarty 
 	}
 \end{lstlisting}
 
-Na listingu nr \ref{lst:FileTree-loadtext} przedstawiona jest metoda wczytywania danych z pliku tekstowego do drzewa binarnego. Metoda zawiera 4 parametry: filename - nazwa pliku, tree - drzewo binarne do którego będą dodane będą wartości, elements - wketor przechowujący wartości do dodania oraz append - który polega na kontroli dodawania wartości do już istniejącego drzewa z wartościami. Append jest ustawiony na false dlatego drzewo będzie wyczyszczone oraz następnie wartości zostaną dodane do drzewa.
+Na listingu nr \ref{lst:FileTree-loadtext} przedstawiona jest metoda wczytywania danych z pliku tekstowego do drzewa binarnego. Metoda zawiera 4 parametry: filename - nazwa pliku, tree - drzewo binarne do którego będą dodane będą wartości, elements - wketor przechowujący wartości do dodania oraz append - który polega na kontroli dodawania wartości do już istniejącego drzewa z wartościami. Append jest ustawiony na false dlatego drzewo będzie czyszczone oraz następne wartości zostaną dodane do drzewa.
+
 W wierszu 2 przedstawiona jest instrukcja wyświetlenia komunikatu błędu w przypadku gdy pliku nie da się otworzyć.
-W wierszach 7, 8 i 9 przedstawiona jest seria instrukcji odpowiadzialna za czyszczenie drzewa binarnego z poprzednich wartości.
-W wierszach 11, 12, 13 oraz 14 przedstawiona jest pętla while która dodaje wartości do tablicy w takiej samej kolejności w są zapisane w pliku tekstowym.
+
+W wierszach 7, 8 i 9 przedstawiona jest seria instrukcji odpowiedzialna za czyszczenie drzewa binarnego z poprzednich wartości.
+
+W wierszach 11, 12, 13 oraz 14 przedstawiona jest pętla while która dodaje wartości do tablicy w takiej samej kolejności w jakiej są zapisane w pliku tekstowym.
 
 \begin{lstlisting}[caption=Metoda \texttt{save\_to\_binary}, label={lst:FileTree-savebinary}, language=C++]
 	void save_to_binary(const std::string& filename, const std::vector<T>& elements) {
@@ -272,11 +276,16 @@ W wierszach 11, 12, 13 oraz 14 przedstawiona jest pętla while która dodaje war
 	}
 \end{lstlisting}
 Na listingu \ref{lst:FileTree-savebinary} przedstawiona jest metoda zapisu danych z drzewa do pliku binarnego. Metoda posiada 2 parametry: filename - nazwa pliku oraz elements - wektor elementów do zapisania.
+
 W wierszu 2 znajduje się instrukcja tworząca plik binarny, aby stworzyć taki plik trzeba zastosować "std::ios::binary".
+
 W wierszach 3 i 4 znajduje się instrukcja if która wyświetli komunikat o błędzie w przypadku gdy pliku nie uda się otworzyć.
-W wierszach od 7 do11 znajduje się szereg instrkucji odpowiedzialnych za zapis danych z drzewa do pliku binarnego.
+
+W wierszach od 7 do 11 znajduje się szereg instrukcji odpowiedzialnych za zapis danych z drzewa do pliku binarnego.
+
 Polecenie w wierszu 7 odpowiedzialne jest za ustalenie liczby elementów w wektorze.
 Polecenie w wierszu 8 zapisuje bity z pamięci do pliku za pomocą "file.write()". Polecenie "reinterpret\_cast<const char*> jest odpowiedzialne za konwersję adresu size na wskaźnik const char*, jest to wymagane ponieważ write zapisuje bity bezpośrednio z pamięci. sizeof() definiuje ile bitów należy zapisać.
+
 Następnie za pomocą pętli for w wierszu 9, 10 oraz 11 każdy element zapisywany jest do pliku binarnego.
 
 \begin{lstlisting}[caption=Metoda \texttt{load\_to\_binary}, label={lst:FileTree-loadbinary}, language=C++]
@@ -302,11 +311,12 @@ Następnie za pomocą pętli for w wierszu 9, 10 oraz 11 każdy element zapisywa
 \end{lstlisting}
 Na listingu \ref{lst:FileTree-loadbinary} przedstawiona jest metoda wczytywania elementów z pliku binarnego do drzewa binarnego.
 Metoda zawiera 4 parametry: filename - nazwa pliku, tree - wskazujące na drzewo do którego zostaną wczytane wartości, elements - wektor przechowujący elementy do wczytania oraz append - decydujący o dodaniu wartości z drzewa binarnego do istniejącej tablicy lub nie.
+
 W wierszu 2 otwierany jest plik binarny poleceniem "std::ifstream()".
 Instrukcja if w wierszach od 3 do 6 odpowiedzialna jest za wyświetlenie komunikatu o błędzie w przypadku gdy pliku nie uda się otworzyć.
 Instrukcja if w wiersach od 7 do 10 odpowiedzialna jest za czyszczenie drzewa z poprzednich wartości przed dodaniem nowych.
 Dodawanie wartości do drzewa binarnego odbywa się w wierszach od 11 do 18.
 W wierszu 11 oraz 12 czytana jest część pliku bin przechowująca liczbę przechowywanych elementów. "reinterpret\_cast<char*>(...) odpowiedzialne jest za konwersję bitów na postać bardziej odpowiednią do odczytu. sizeof(...) odpowiedzialne jest za liczbę bitów do odczytania.
-Następnie w wiersach od 13 do 18 zczytywane są wszystkie wartości oraz dodawane do drzewa. Polecenie w wierszu 16 sprawdza jest odpowiedzialne za dodawanie elementów w takiej samej kolejności w jakiej są zapisane na pliku bin. Polecenie w wirrszu 17 dodaje elementy.
+Następnie w wierszach od 13 do 18 sczytywane są wszystkie wartości oraz dodawane do drzewa. Polecenie w wierszu 16 sprawdza jest odpowiedzialne za dodawanie elementów w takiej samej kolejności w jakiej są zapisane na pliku bin. Polecenie w wierszu 17 dodaje elementy.
 
 \subsection{Ciekawe fragmenty kodu}
