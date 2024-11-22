@@ -7,3 +7,5 @@
 \contentsline {lstlisting}{\numberline {7}{\ignorespaces Metoda \texttt {load\_to\_file}}}{15}{lstlisting.7}%
 \contentsline {lstlisting}{\numberline {8}{\ignorespaces Metoda \texttt {save\_to\_binary}}}{16}{lstlisting.8}%
 \contentsline {lstlisting}{\numberline {9}{\ignorespaces Metoda \texttt {load\_to\_binary}}}{17}{lstlisting.9}%
+\contentsline {lstlisting}{\numberline {10}{\ignorespaces Klasa \texttt {main}}}{18}{lstlisting.10}%
+\contentsline {lstlisting}{\numberline {11}{\ignorespaces Klasa \texttt {main}}}{21}{lstlisting.11}%
