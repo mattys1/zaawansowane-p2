@@ -8,18 +8,16 @@
 bool lauf()
 {
     std::string input;
-    std::cout << "\nDo you want to repeat? (type yes ocontinue, no to stop): ";
-    std::cin >> input;
+    std::cout << "\nDo you want to repeat? (type yes ocontinue, no to stop): ", std::cin >> input;
     do {
-        if (input == "Yes" || input == "yes") {
+        if (input == "Yes" || input == "yes" || input== "y") {
             return true;
         }
-        else if (input == "no" || input == "No") {
+        else if (input == "no" || input == "No" || input == "n") {
             return false;
         }
         else {
-            std::cout << "insert ONLY yes or no";
-            std::cin >> input;
+            std::cout << "insert ONLY yes or no", std::cin >> input;
         }
     } while (true);
 
