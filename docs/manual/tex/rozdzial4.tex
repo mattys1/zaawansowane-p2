@@ -477,3 +477,26 @@ Funkcja jest odpowiedzialna za sprawdzanie czy podano poprawną wartość w komu
 \end{lstlisting}
 
 Na listingu nr. \ref{lst:delete_element_excerpt}, widać od linijki nr. 3 zanestowane zdania \texttt{if}. Służą one do sprawdzania, czy dziecko \texttt{elementOfValue} jest połączone z rodzicem od lewej czy prawej strony, po czym wskaźnik rodzica jest zmieniany na \texttt{nullptr}. Dlatego, że C++ nie posiada łatwej możliwości tworzenia referencji do wskaźników, np. przy użyciu operatora \texttt{?}, czy lambdy, należy użyć takich niezbyt ładnych zabiegów.
+
+\begin{lstlisting}[caption=Metoda \texttt{Filepath}, label={lst:filepath}, language=C++]
+	std::vector<T> find_path(const T& value) {
+		std::vector<T> path;
+		Tree* curr = root;
+		
+		while (root != nullptr) {
+			path.push_back(curr->contents);
+			
+			if (curr->contents == value) {
+				return path;
+			}
+			else if (value < curr->contents) {
+				curr = curr->left;
+			}
+			else {
+				curr = curr->right;
+			}
+		}
+		return {};
+	}
+\end{lstlisting}
+na listingu przedstawiona jest metoda szukająca drogi do podanej wartości. Metoda przyjmuje jeden parametr: value - poszukiwana wartość. W wektorze path w wierszu 2 przechowywane będą wartości. Wskaźnik curr na root w wierszu 3 wskazuje na root w drzewie, użyty jest aby nie modyfikować bezpośrednio root. droga jest wyszukiwana za pomocą pętli while. za pomocą instrukcji w wierszu 6 wartości są dodawane do wektora path. Instrukcja if służy do przejścia na dziecko lewe lub prawe.
