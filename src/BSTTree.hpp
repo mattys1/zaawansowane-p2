@@ -1,7 +1,3 @@
-/**
- * @file BSTTree.hpp
- * @brief Binary Search Tree (BST) implementation for storing and manipulating elements of type T.
- */
 
 #pragma once
 
@@ -9,37 +5,22 @@
 #include <vector>
 #include <algorithm>
 
- /**
-  * @class BSTTree
-  * @brief A Binary Search Tree (BST) implementation for managing elements of type T.
-  * @tparam T The type of elements to be stored in the tree.
-  */
+/**
+ * @brief Binary search tree implementation, accepting elements of type T
+ */
 template <typename T>
 class BSTTree {
 private:
-    /**
-     * @brief Represents a single node in the Binary Search Tree.
-     */
     struct Tree {
         T contents;
         Tree* parent;
         Tree* left;  
         Tree* right;
 
-        /**
-         * @brief Constructs a Tree node with given parameters.
-         * @param _contents The value to be stored in the node.
-         * @param _parent Pointer to the parent node.
-         * @param _left Pointer to the left child.
-         * @param _right Pointer to the right child.
-         */
         Tree(T _contents, Tree* _parent = nullptr, Tree* _left = nullptr, Tree* _right = nullptr) :
             contents{ _contents }, parent{ _parent }, left{ _left }, right{ _right } {
         }
 
-        /**
-         * @brief Destructor to clean up dynamically allocated child nodes.
-         */
         ~Tree() {
             delete left;
             delete right;
@@ -48,12 +29,6 @@ private:
 
     Tree* root;
 
-    /**
-     * @brief Recursively adds an element to the tree.
-     * @param element The element to be added.
-     * @param node Reference to the current node being inspected.
-     * @param parentNode Pointer to the parent of the current node (default is nullptr).
-     */
     void recursive_add(const T& element, Tree*& node, Tree* parentNode = nullptr) {
         if (node == nullptr) {
             node = new Tree(element);
@@ -77,11 +52,6 @@ private:
         }
     }
 
-    /**
-     * @brief Recursively performs preorder traversal of the tree.
-     * @param node Pointer to the current node being visited.
-     * @param traversedTrees Vector to store pointers to visited nodes.
-     */
     void preorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) const {
         if (node == nullptr) {
             return;
@@ -91,11 +61,6 @@ private:
         preorder_traverse_recursive(node->right, traversedTrees);
     }
 
-    /**
-     * @brief Recursively performs inorder traversal of the tree.
-     * @param node Pointer to the current node being visited.
-     * @param traversedTrees Vector to store pointers to visited nodes.
-     */
     void inorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) const {
         if (node == nullptr) {
             return;
@@ -105,11 +70,6 @@ private:
         inorder_traverse_recursive(node->right, traversedTrees);
     }
 
-    /**
-     * @brief Recursively performs postorder traversal of the tree.
-     * @param node Pointer to the current node being visited.
-     * @param traversedTrees Vector to store pointers to visited nodes.
-     */
     void postorder_traverse_recursive(Tree* node, std::vector<Tree*>& traversedTrees) const {
         if (node == nullptr) {
             return;
@@ -205,10 +165,9 @@ public:
         Tree* elementOfValue{ *elementOfValueIterator };
         if (elementOfValue->left == nullptr && elementOfValue->right == nullptr) {
             if (elementOfValue->parent != nullptr) {
-                if (elementOfValue->parent->left == elementOfValue) {
+                if(elementOfValue->parent->left == elementOfValue) {
                     elementOfValue->parent->left = nullptr;
-                }
-                else {
+                } else {
                     elementOfValue->parent->right = nullptr;
                 }
             }
